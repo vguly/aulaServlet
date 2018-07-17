@@ -1,0 +1,30 @@
+DICAS de Servlet
+
+webContent
+	onde tem o arquivo inicial index.html ou index.jsp
+
+WEB-INF
+	diretorio não visivel pela WEB 
+	possui lib e configurações gerais 
+	O web.xml é usado para diversas outras configurações de um servlet contêiner.
+
+META-INF
+	diretorio não visivel pela WEB. Guarda as classes 	
+
+Metodo GET 
+	req - são os dados que o cliente manda ao servidor
+	resp- sãoos dados que o servidor manda para o cliente
+	
+	Na chamada de um submit o metodo padrao é o GET. Se vc quiser enviar dados para o servidor deve-se alterar para :
+	<form action="novaEmpresa" method="post">
+
+Na pratica, os navegadores atuais suportam 3 metodos: GET, POST e HEAD. 
+
+	
+Na codificação JSP, têm-se algumas diretivas, as quais são utilizadas para informações especiais dentro de paginas, sendo dividido em três tipos:
+
+@include: utilizado para inserir os códigos de arquivos à página corrente;
+@page: responsável por trazer informações sobre a página JSP;
+@taglib: responsável por habilitar uma biblioteca de tags personalizada (item que será abordado em outro artigo com mais detalhes).	
+
+inclui linha para testar o git pelo eclipse
