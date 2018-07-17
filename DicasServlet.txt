@@ -27,4 +27,3 @@ Na codificação JSP, têm-se algumas diretivas, as quais são utilizadas para infor
 @page: responsável por trazer informações sobre a página JSP;
 @taglib: responsável por habilitar uma biblioteca de tags personalizada (item que será abordado em outro artigo com mais detalhes).	
 
-inclui linha para testar o git pelo eclipse
