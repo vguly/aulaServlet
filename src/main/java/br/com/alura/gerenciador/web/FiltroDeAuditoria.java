@@ -9,7 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 //esse codigo insere um filtro espiao que guarda todas as paginas acessadas
@@ -27,8 +27,17 @@ public class FiltroDeAuditoria implements Filter {
 			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
 		String uri = req.getRequestURI();
-		System.out.println("Usuário acessou: "+ uri);
-		chain.doFilter(request, response);   // aqui ele retorma ao processamento do codigo normal
+
+		   Cookie cookie = getUsuario(req);
+		    String usuario = "<deslogado>";
+
+		    if (cookie != null)
+		        usuario = cookie.getValue();
+
+		    System.out.println("Usuario " + usuario + " acessando a URI "
+		            + req.getRequestURI());
+
+		    chain.doFilter(request, response);   // aqui ele retorma ao processamento do codigo normal
 		
 	}
 
@@ -36,4 +45,16 @@ public class FiltroDeAuditoria implements Filter {
 	public void init(FilterConfig arg0) throws ServletException {
 	}
 
+private Cookie getUsuario(HttpServletRequest req) {
+
+    Cookie[] cookies = req.getCookies();
+
+    for (Cookie cookie : cookies) {
+        if (cookie.getName().equals("usuario.logado")) {
+            return cookie;
+        }
+    }
+
+    return null;
+}
 }
